@@ -32,10 +32,10 @@ const calculate = (accCreationMonth, accCreationYear, hasNitro) => {
 
   if (hasNitro) {
     // Calculate the difference between the eligible nitro date and the account creation date
-    monthsUntilEligible = (eligibleNitroDate.getFullYear() - accountDate.getFullYear()) * 12 + (eligibleNitroDate.getMonth() - accountDate.getMonth());
+    monthsUntilEligible = (eligibleNitroDate.getFullYear() - accountDate.getFullYear()) * 12 + (eligibleNitroDate.getMonth() - accountDate.getMonth() - 5); //account for wave #6 where discord gave nitro users 9 months instead of 4
   } else {
     // Calculate the difference between the eligible normal date and the account creation date
-    monthsUntilEligible = (eligibleNormalDate.getFullYear() - accountDate.getFullYear()) * 12 + (eligibleNormalDate.getMonth() - accountDate.getMonth());
+    monthsUntilEligible = (eligibleNormalDate.getFullYear() - accountDate.getFullYear()) * 12 + (eligibleNormalDate.getMonth() - accountDate.getMonth() - 1);//account for wave #6 where discord gave nitro users 2 months instead of 1
   }
 
   const rolloutSpeed = hasNitro ? 4 : 1; // 4 months per wave for nitro users, 1 month per wave for non-nitro users
@@ -67,7 +67,11 @@ const getUserInput = async () => {
     console.log('The update rollout date cannot be determined for the given inputs.');
   } else if (daysUntilRollout === 0) {
     console.log('You are already eligible for the update!');
-  } else {
+  } else if (currentDate.getUTCHours() != 17 && currentDate.getUTCMinutes() != 30 && daysUntilRollout === 0) 
+  {
+    console.log(`The update is rolling out for you today! The next wave should be in approximately ${17 - currentDate.getUTCHours()} hours.`)
+  }
+  else {
     const updatedDate = new Date();
     updatedDate.setDate(currentDate.getDate() + daysUntilRollout);
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
