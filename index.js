@@ -32,13 +32,13 @@ const calculate = (accCreationMonth, accCreationYear, hasNitro) => {
 
   if (hasNitro) {
     // Calculate the difference between the eligible nitro date and the account creation date
-    monthsUntilEligible = (eligibleNitroDate.getFullYear() - accountDate.getFullYear()) * 12 + (eligibleNitroDate.getMonth() - accountDate.getMonth() - 5); //account for wave #6 where discord gave nitro users 9 months instead of 4
+    monthsUntilEligible = (eligibleNitroDate.getFullYear() - accountDate.getFullYear()) * 12 + (eligibleNitroDate.getMonth() - accountDate.getMonth() - 19); //account for wave #6 where discord gave nitro users 9 months instead of 4
   } else {
     // Calculate the difference between the eligible normal date and the account creation date
-    monthsUntilEligible = (eligibleNormalDate.getFullYear() - accountDate.getFullYear()) * 12 + (eligibleNormalDate.getMonth() - accountDate.getMonth() - 1);//account for wave #6 where discord gave nitro users 2 months instead of 1
+    monthsUntilEligible = (eligibleNormalDate.getFullYear() - accountDate.getFullYear()) * 12 + (eligibleNormalDate.getMonth() - accountDate.getMonth() - 2);//account for wave #6 where discord gave nitro users 2 months instead of 1
   }
 
-  const rolloutSpeed = hasNitro ? 4 : 1; // 4 months per wave for nitro users, 1 month per wave for non-nitro users
+  const rolloutSpeed = hasNitro ? 17 : 4; // 17 months per wave for nitro users, 4 month per wave for non-nitro users
 
   const wavesUntilEligible = Math.ceil(monthsUntilEligible / rolloutSpeed);
   const days = Math.ceil(wavesUntilEligible / 2);
