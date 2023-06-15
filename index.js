@@ -61,7 +61,6 @@ const getUserInput = async () => {
   const hasNitro = (await promptInput('Do you have Nitro since before March 1st? (yes/no): ')).toLowerCase() === 'yes';
 
   const daysUntilRollout = Math.abs(calculate(accountCreationMonth, accountCreationYear, hasNitro));
-  let eligibleDate = currentDate.getDate() + daysUntilRollout;
 
   if (isNaN(daysUntilRollout)) {
     console.log('The update rollout date cannot be determined for the given inputs.');
