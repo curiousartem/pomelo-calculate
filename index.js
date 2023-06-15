@@ -67,7 +67,7 @@ const getUserInput = async () => {
     console.log('The update rollout date cannot be determined for the given inputs.');
   } else if (daysUntilRollout === 0) {
     console.log('You are already eligible for the update!');
-  } else if (currentDate.getUTCHours() != 17 && currentDate.getUTCMinutes() != 30 && daysUntilRollout === 0) 
+  } else if (currentDate.getUTCHours() != 17 && daysUntilRollout === 0) 
   {
     console.log(`The update is rolling out for you today! The next wave should be in approximately ${17 - currentDate.getUTCHours()} hours.`)
   }

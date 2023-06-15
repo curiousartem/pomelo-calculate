@@ -1,4 +1,5 @@
 # This is a Discord Pomelo calculator.
+### ⚠ This will probably get archived soon due to Discord changing its rollout schedule and the Pomelo rollout reaching its end.
 ### Discord Pomelo is the internal name of the username change system.
 
 This calculator will calculate when your account will be eligible for migrating to the new username system, that's it.
